@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000">
+
+    <SurfaceView
+        android:id="@+id/viewCam1"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <SurfaceView
+        android:id="@+id/viewCam2"
+        android:layout_width="20dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="0dp" />
+
+    <io.kasava.uvc.widget.UVCCameraTextureView
+        android:id="@+id/viewCam1Usb"
+        android:layout_width="853dp"
+        android:layout_height="480dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="0dp" />
+
+    <io.kasava.uvc.widget.UVCCameraTextureView
+        android:id="@+id/viewCam2Usb"
+        android:layout_width="853dp"
+        android:layout_height="480dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="320dp" />
+
+    <io.kasava.uvc.widget.UVCCameraTextureView
+        android:id="@+id/viewCam3Usb"
+        android:layout_width="320dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp" />
+
+    <ImageView
+        android:id="@+id/custImg"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
+
+</RelativeLayout>

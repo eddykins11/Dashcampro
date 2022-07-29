@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Dashcampro</string>
+    <string name="journey_format">%s:%s:%s:%s:%.2f:%.1f:%.1f:%.1f:%d:%d:%d:0:0:0:%.1f:%.1f:%.1f:%d</string>
+</resources>

@@ -1,0 +1,27 @@
+com/serenegiant/usb/DeviceFilter.java
+ com.serenegiant.usb.DeviceFilter
+com/serenegiant/usb/USBMonitor.java
+ com.serenegiant.usb.USBMonitor
+ com.serenegiant.usb.USBMonitor$1
+ com.serenegiant.usb.USBMonitor$2
+ com.serenegiant.usb.USBMonitor$2$1
+ com.serenegiant.usb.USBMonitor$3
+ com.serenegiant.usb.USBMonitor$4
+ com.serenegiant.usb.USBMonitor$5
+ com.serenegiant.usb.USBMonitor$6
+ com.serenegiant.usb.USBMonitor$OnDeviceConnectListener
+ com.serenegiant.usb.USBMonitor$UsbControlBlock
+ com.serenegiant.usb.USBMonitor$UsbDeviceInfo
+com/serenegiant/usb/UVCCamera.java
+ com.serenegiant.usb.UVCCamera
+com/serenegiant/usb/IStatusCallback.java
+ com.serenegiant.usb.IStatusCallback
+com/serenegiant/usb/USBVendorId.java
+ com.serenegiant.usb.USBVendorId
+com/serenegiant/usb/IFrameCallback.java
+ com.serenegiant.usb.IFrameCallback
+com/serenegiant/uvccamera/BuildConfig.java
+ com.serenegiant.uvccamera.BuildConfig
+com/serenegiant/usb/Size.java
+ com.serenegiant.usb.Size
+ com.serenegiant.usb.Size$1

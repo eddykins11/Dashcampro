@@ -1,0 +1,310 @@
+﻿#
+# custom.prop for all custimizing property
+#
+
+persist.sys.country=GB
+persist.sys.language=en
+persist.sys.timezone=Europe/London
+
+#only show special language
+#zh-CN 中简, zh-TW 中繁, en-US 英语, ru-RU 俄语
+#es-ES 西班牙, pt-BR 葡萄牙（巴西）, kk-KZ 哈萨克
+#ar-EG 阿拉伯（埃及）, ko-KR 韩国, pl-PL 波兰,vi-VN 越南
+#bg-BG 保加利亚, th-TH 泰语, tr-TR 土耳其, 捷克 cs-CZ, 斯洛伐克 sk-SK
+#el-GR 希腊, de-DE 德语, fr-FR 法语, it-IT 意大利, ja-JP 日语
+#ro-RO 罗马尼亚
+#ro.language.need=zh-CN,zh-TW,en-US,ru-RU,es-ES,pt-BR,kk-KZ,ar-EG,ko-KR,pl-PL,vi-VN,bg-BG,th-TH,tr-TR,cs-CZ,sk-SK,el-GR,ro-RO
+ro.language.need=zh-CN,zh-TW,en-US,ru-RU,vi-VN,bg-BG,th-TH,tr-TR,cs-CZ,sk-SK,el-GR,ro-RO
+
+#enable to tune off GPS etc. before go to sleep
+ro.car_sleep_off_ext_device=1
+
+#Enable usb camera
+ro.hw.usbcam=1
+
+#Enable CameraClient special logic.
+ro.product.carrecord=1
+
+#set default usb camera fps
+persist.usbcam.fps=15
+
+#if you want disable back camera recording
+#persist.rear.record.disable=1
+
+#ro.night.camera.enable=1
+
+#碰撞锁影时：前20s后20s
+#persist.accident.record.param 20,20
+#语音指令抓拍的时候：前5s后10s
+#persist.capture.record.param 5,10
+#手机远程抓拍的长度：后10s（机器休眠时，第一个参数不会生效）
+#persist.remote.record.param  0,10
+
+#BT SCO default volume is 0.2, we want a little louder
+#so set default multiple 3.5, the max ratio is 5.0
+persist.btsco.volume.ratio=4.5
+#persist.voip.volume.ratio=3.5
+
+#avoid volume too loud if besloud is enabled, should be more than 0.75
+#persist.bes.volume.ratio=0.8
+
+#set AudioIn(Mic) to 16Khz
+ro.audio.input.samplerate=16000
+
+#bt software amplify, it's a ratio to multipy the original pcm data.
+#range is [ 1.0 - 5.0 ), exclude 5.0 , the bigger the louder.
+sys.bt.sw.volume=2.7
+
+#we enable the macro USING_EXTAMP_HP, it means the headphone volume is our volume
+#add property in AudioMachineDevice::SetHeadPhoneGain to control the default volume
+#range is [0, 7], the bigger the louder, original default is 2
+sys.audio.headphone.gain=7
+
+#enlarge the communication volume, default value in code is 140, 160 is the max value
+sys.sip.default.volume=160
+
+#mic right channel attenuation
+#because right channel mic is connect to playback pin directly
+#it's volume is bigger than left channel, so we reduce this channel gain
+#to make both channel volume almost the same.
+#range is [-2 3], -2 is the most biggest volume, 3 is the most smallest volume
+#now after set to 3, it seems left and right almost the same.
+sys.rightch.attenuation=3
+#sys.leftch.attenuation=-2
+sys.mic.default.volume=192
+persist.txz.filter.aec=1
+
+#persist.txz.filter.aec=0 will close TXZ AEC and Open audio HAL copy left to right channel logic
+#sys.mic.default.volume will modify the mic volume
+#close this these property and open above four property will use differnt record path
+#persist.txz.filter.aec=0
+#sys.mic.default.volume=240
+
+sys.recog.default.volume=196
+
+#Format: repeatPoint(ms),W,H,AudioEnable
+ro.cm7.bootanim.args=9000,-1,-1,0
+
+#Disable VoiceAssistant function, default is 1(iFly), 2 is for TXZ, 4 is aispeech, 6 is mini speech
+persist.voiceassitant.engine=0
+
+#Wakeup key words(both for AIOS and TXZ)
+persist.wakeup.keywords=小明你好,你好小明
+
+#only for AIOS
+persist.wakeup.threshhold=0.09,0.095
+
+#aios needed, 3G platform is normal
+#ro.aispeech.reversed_channel=true
+
+#sensitivity of voice wakeup(TXZ)
+sys.car.score_txz=37,40,48
+sys.car.score_aios=120,100,80
+
+#set reply words of voice assistant(for iFly)
+sys.voice.reply=你好
+
+#sensitivity of voice wakeup(iFly)
+sys.car.score=35,30,25
+
+ro.apps.black.list=讯飞,下载,图库,发射,蓝牙,高德,GPS,下載,圖片庫,發射,藍牙,语音,
+#ro.apps.black.list2=腾讯
+
+#all items as following:
+#gsensor,sdcard,sdcard2,speaker_audio_channel,speaker_audio_record,tp,lcd,brightness,
+#camera,button,acc,back_off,wifi,bt,gps,radar,fm_channel
+#persist.selftest.remove= tp,lcd,brightness
+
+#hide 3G data limit UI
+ro.hide.data.limit.ui=1
+
+ro.fullscreen.black.list=cn.kuwo.kwmusiccar
+ro.wake.lock.black.list=cn.kuwo.kwmusiccar
+
+#don't allow to install 3rd apk by default
+#"app_process" means allow "pm install"
+#"xxx" should be replaced with a package name of custom's apk
+ro.apk.installer.whitelist=app_process,adb,xxx,com.car.carservice
+
+#enable fake IMEI
+ro.imei.fake=1
+
+#if you don't want any camera watermark, open this property
+#persist.sys.watermark.enable=0
+
+#if you want display gps / speed information, open this property
+persist.dvr.watermark.enable=0
+
+#whether show lock button in dvr preview
+ro.dvrprev.btns=lock
+
+#disable the gesture of pull-down by dual fingers
+ro.notification.panel.disable=1
+
+#for cm84, if you need webrtc aec, open this property
+persist.sys.webrtc.delay=0
+
+#black freq point of FM station
+#ro.fm.invalid.freq=85-87.5,90.5-93.5,108.5-110
+
+#ro.keycode.remap=F4:F12:F12:F4 means each other change to the other one
+#F4 default to launch BT, now change to F12 to launch video capturing
+#ro.keycode.remap=F4:F12
+
+#g-sensor sensitive for dvr lock and system wakeup
+#(lock_vidio: low,norml,high, wakeup: low,norml,high)
+persist.car.sensitive=200,160,130,70,60,50
+
+#playing boot-animation when ACC ON
+#persist.PlayMov.AccOn=1
+
+#eable to receive AD information from server
+ro.car.ad=1
+
+#Maximum screen brightness allowed by the power manager, default is 255
+#this prop could be overwrited by devinfo.bin
+#ro.lcd.cust_max_bl=130
+
+#additional lcd brightness for Powerkey
+#deprecated now
+#sys.power.dimlevel=5,90
+
+#for hardware
+#persist.mt6735.skip.cvbs=1
+
+#for C1/T1 hardware, use PMIC amplify instead of external amplify
+#af.resource.extamp_support=0
+
+#show uninstall button is app detail of setting
+#ro.car.uninstall=1, default is 0 means uninstall not allowed
+
+#disable some usless service in services.jar
+persist.disable.svc_list=mms,projection,dreams,vibrator,dock
+
+#enable adb switch by default
+persist.service.adb.enable=1
+#enable tcp adb
+service.adb.tcp.port=5555
+
+#simple download addr for sotfap
+#ro.download.addr=car.com
+
+#new jiazu bt keyboard support, default is 0, old one first
+#ro.btkb.newjiazu=1
+
+#tipplayer dont play sound
+#persist.tts.mute=1
+
+#enable or disable bt keyboard, default is 1 to disable
+#ro.btkb.disabled=0
+
+#force screen off if set, unit is second and must be larger than 0, default is 0
+#persist.screenoff.timeout=0
+
+#9.88inch(1600*400) LCD use SystemUIPlugin's LeftBar to simulate NavigationBar, so to set ro.navigationbar.width=0
+#persist.navigationbar.width=0
+#persist.leftbar.width=200
+#persist.rightbar.width=200
+
+#SystemUIPlugin's LeftBar to show a fullscreen button can make Gaode Map fullscreen
+#persist.fullscreen.packages=com.autonavi.amapautolite
+
+#DVR mute recording, default is 1, not mute
+#ro.record.mute=1
+
+#DVR loop video directory name, default is empty, save loop video to DVR root path
+#sys.video.loop.dir=video
+
+#auto sleep time when no moving, unit is minute, 0 means never, others are 15, 30, 60, default is 30
+ro.autosleep.time=0
+
+#play the words by tts to the end of status reporting
+#ro.tts.statusmore=xxx
+
+#enable install app from fs_patch in TF
+#ro.patch.install=1
+
+#gsensor wakeup/sos alarm with image or video, default 1 for image
+#ro.car.wakeupimg=0
+ro.car.sosimg=0
+
+#use for alarm with video [camid,length_forward,length]
+#persist.video.wakeup.params=1,0,15
+
+#disable softap
+#ro.tether.denied=true
+
+#disable softap when reboot or wakeup
+#ro.softap.disabled=1
+
+#enable data roaming default
+ro.com.android.dataroaming=true
+
+#camera preview on fullscreen mode when ACC ON
+#persist.acc.on.cam.fullscreen=front
+#persist.acc.on.cam.fullscreen=rear
+
+#CarService report SocolHost's dataflow to carassist.cn
+#persist.flow.calc=com.socol,com.situdata.pufangda,com.car.tencent
+
+#for 1600x400 LCD, 640x480 back camera will display 变形
+#if you want display bestfit, we will crop/drop top/bottom region of camera content
+#ro.camera.display.bestfit=1
+
+#setup lock and capture size, must be less than 30%
+#sys.lockcap.percent=16,16
+
+#enable more wakeup words, default is 0
+ro.voicewakeup.more=1
+
+#display mile instead of kilometer
+#sys.display.gps.mile=1
+
+#disable ADAS in 3G platform
+ro.adas.disable=1
+
+#dont report gsensor alarm if acc is on in x seconds, default 0 means immediatelly report
+#ro.galarm.delay=0
+
+#enable timelapse recording, default is 0 for disabling
+#ro.dvr.slow=1
+
+#disable reverse gear UI
+#persist.dvr.no.reverse.gear.ui=1
+
+#enable oneshot function for speech, default is disabled
+#ro.voice.oneshot=1
+
+#ro.accon.words=xxx
+#ro.accoff.words=xxx
+#play prompt for capturing voices, default is 0, no sound
+#ro.voice.remind=1
+
+#defalut disable screen saving, second unit, 60, 180, 300 are supported
+ro.screensave.time=0
+
+#go back to normal if backcar stop
+persist.backcar.timeout=1
+
+#screen saver default display according to screen wakelock, or else display for these packages
+#persist.screensave.whitelist=com.car.player
+
+
+#mIFramesIntervalSec only can 1s 1 I frame, but tencent request 0.5s 1 I frame.
+#so we tell encoder, we only 15fps, but in fact we are 30fps, so it can encode I frame every 0.5s
+sys.fake.encoder.fps=15
+
+#F11 has the function like power key
+#ro.key.f112power=1
+
+#if /system/custom/hud_logo.png exist, show it in hud, make sure the png is small
+#direction to show for the logo, 1:left top, 2:right top, 3:right bottom, 4:left bottom, 5:center, default is 1
+#ro.hudlogo.direction=1
+
+ro.btkb.disabled=0
+persist.screenoff.timeout=0
+ro.edog.default.mode=-1
+ro.product.class=headless
+persist.sys.hud.show=1
+persist.usb.mode=host
+dalvik.vm.dex2oat-filter=interpret-only
