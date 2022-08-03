@@ -37,6 +37,9 @@ public class Cellular {
     private static final String ACTION_STARVIEW_AIRPLANE_MODE_SET = "com.ime.service.intent.ACTION_AIRPLANE_MODE_SET";
     private static final String ACTION_PHISUNG_AIRPLANE_MODE_ON = "com.car.modem_off";
     private static final String ACTION_PHISUNG_AIRPLANE_MODE_OFF = "com.car.modem_on";
+    private static final Uri PREFERRED_APN_URI = Uri.parse("content://telephony/carriers/preferapn");
+
+
 
     private static final Uri APN_TABLE_URI = Uri.parse("content://telephony/carriers");
 
@@ -49,8 +52,9 @@ public class Cellular {
         setAirplaneModeOn(model, false);
         //resetModem(model);
 
-        //getApns();
-        set3iot();
+        getApns();
+        setbhMobile();
+        //set3iot();
 
         // Enable data roaming if not set
         if (!isDataRoamingEnabled()) {
@@ -178,8 +182,8 @@ public class Cellular {
         Log.d(TAG, "getApns()");
 
         try {
-            Cursor c = mContext.getContentResolver().query(APN_TABLE_URI, null, null, null, null);
-            //Cursor c = mContext.getContentResolver().query(PREFERRED_APN_URI, null, null, null, null);
+            //Cursor c = mContext.getContentResolver().query(APN_TABLE_URI, null, null, null, null);
+            Cursor c = mContext.getContentResolver().query(PREFERRED_APN_URI, null, null, null, null);
 
             if (c != null) {
                 printAllData(c); //Print the entire result set
@@ -268,6 +272,52 @@ public class Cellular {
 
         try {
             resolver.update(APN_TABLE_URI, values, "_id=379", null);
+        } catch (Exception ex) {
+            Log.d(TAG, ex.getMessage());
+        }
+    }
+
+    public void setbhMobile() {
+        ContentResolver resolver = mContext.getContentResolver();
+        ContentValues values = new ContentValues();
+        values.put("name", "bhmobile");
+        values.put("numeric", "21890");
+        values.put("mcc", "218");
+        values.put("mnc", "90");
+        values.put("apn", "active.bhmobile.ba");
+        values.put("user", "");
+        values.put("server", "");
+        values.put("password", "");
+        values.put("proxy", "");
+        values.put("port", "");
+        values.put("mmsproxy", "");
+        values.put("mmsport", "");
+        values.put("mmsc", "");
+        values.put("authtype", "-1");
+        values.put("type", "default");
+        values.put("current", "1");
+        values.put("sourcetype", "0");
+        values.put("csdnum", "");
+        values.put("protocol", "IP");
+        values.put("roaming_protocol", "IP");
+        values.put("carrier_enabled", "1");
+        values.put("bearer", "0");
+        values.put("spn", "");
+        values.put("imsi", "");
+        values.put("pnn", "");
+        values.put("ppp", "");
+        values.put("mvno_type", "");
+        values.put("mvno_match_data", "");
+        values.put("sub_id", "3");
+        values.put("profile_id", "0");
+        values.put("modem_cognitive", "0");
+        values.put("max_conns", "0");
+        values.put("wait_time", "0");
+        values.put("max_conns_time", "0");
+        values.put("mtu", "0");
+
+        try {
+            resolver.update(APN_TABLE_URI, values, "_id=144", null);
         } catch (Exception ex) {
             Log.d(TAG, ex.getMessage());
         }

@@ -764,13 +764,15 @@ public class Azure {
                 // Update database
                 HealthCheckData healthCheckData = mHealthCheckDataQueue.get(0);
 
-                // Set the accountId & deviceId
+
                 if(mSubscription.accountId != null){
                      healthCheckData.accountId = mSubscription.accountId;
                 }
+
                 else{
                     healthCheckData.accountId = null;
                 }
+
                 healthCheckData.deviceId = mDeviceId;
 
                 AzureResponse response = mClient.invokeApi("HealthCheck", healthCheckData, AzureResponse.class).get();

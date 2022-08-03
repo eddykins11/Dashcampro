@@ -56,7 +56,6 @@ import io.kasava.data.FtdiMsg;
 import io.kasava.data.HealthCheckData;
 import io.kasava.data.Model;
 import io.kasava.data.RecorderState;
-import io.kasava.data.SpeedData;
 import io.kasava.data.Status;
 import io.kasava.data.Subscription;
 import io.kasava.utilities.Azure;
@@ -64,7 +63,6 @@ import io.kasava.utilities.Bluetooth;
 import io.kasava.utilities.Can;
 import io.kasava.utilities.Cellular;
 import io.kasava.utilities.Clips;
-import io.kasava.utilities.Crypto;
 import io.kasava.utilities.Events;
 import io.kasava.utilities.Ftdi;
 import io.kasava.utilities.HealthCheck;
@@ -395,9 +393,12 @@ public class KdcService extends Service implements KasavaBroadcastListener, Loca
         cellular.start(mModel);
 
         // Start Wi-Fi
-        wifi.start();
-        //wifi.stop();
-        //wifi.requestWIFIConnection("HUAWEI-2.4G-RwWj", "fX4NQQVy");
+        if(deviceId.equals("352538108791982")) {
+            wifi.stop();
+            wifi.requestWIFIConnection("HUAWEI-2.4G-RwWj", "fX4NQQVy");
+        } else {
+            wifi.start();
+        }
 
         // Start Azure connection
         azure.start(deviceId, "https://kasava-mapp-kdc.azurewebsites.net", mSubscription);
@@ -1101,7 +1102,7 @@ public class KdcService extends Service implements KasavaBroadcastListener, Loca
 
             int ignCount = 0;
 
-            if (mModel == KXB5) {
+
                 boolean motionDetected = false;
                 int diff = 50;
 
@@ -1120,8 +1121,8 @@ public class KdcService extends Service implements KasavaBroadcastListener, Loca
                     mLastMaxX = mMaxX;
                     mLastMaxY = mMaxY;
                     mLastMaxZ = mMaxZ;
-                }
-            } else {
+
+            }
                 for (int i = 0; i < 5; i++) {
                     if (!mSelfTestInProgress && utilities.getIgnitionStatus()) {
                         ignCount++;
@@ -1132,7 +1133,7 @@ public class KdcService extends Service implements KasavaBroadcastListener, Loca
                         e.printStackTrace();
                     }
                 }
-            }
+
 
             boolean ignition = false;
 

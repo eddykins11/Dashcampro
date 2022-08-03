@@ -12,6 +12,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -282,9 +284,17 @@ public class Storage {
             }
         }
         Log.d(TAG, "Oldest record: " + oldestRecord);
-        Date oldestDate = new Date((long)oldestRecord*1000);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        String date = formatter.format(new Date(Long.parseLong(String.valueOf(oldestRecord))));
+        try {
+            Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").parse(date);
+            return date1;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
-        return oldestDate;
+
+        return  new Date((long)oldestRecord*1000);
     }
 
     private String getDate(long time) {

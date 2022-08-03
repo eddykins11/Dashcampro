@@ -313,7 +313,8 @@ public class RecorderActivity extends AppCompatActivity {
                                 LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intentLocal2);
                             }
                         }
-                        startRecording();
+                         startRecording();
+
                     } else {
                         stopRecording();
                     }
@@ -585,12 +586,15 @@ public class RecorderActivity extends AppCompatActivity {
         if(mUvcDevice2 != null && mUvcDevice2.isCameraFound()) { mModeCam2 = CAM_MODE.USB; }
         if(mUvcDevice3 != null && mUvcDevice3.isCameraFound()) { mModeCam3 = CAM_MODE.USB; }
 
+
         // Count how many cameras there are
+
         int cameraCount = 0;
         if(mModeCam1 == CAM_MODE.MIPI || mModeCam1 == CAM_MODE.USB) { cameraCount++; }
         if(mModeCam2 == CAM_MODE.MIPI || mModeCam2 == CAM_MODE.USB) { cameraCount++; }
         if(mModeCam3 == CAM_MODE.MIPI || mModeCam3 == CAM_MODE.USB) { cameraCount++; }
         mKdcService.setCameraCount(cameraCount);
+
 
         mKdcService.setRecorderState(RecorderState.STATE.RECORDING);
 
